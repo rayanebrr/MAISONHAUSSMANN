@@ -1,6 +1,5 @@
 from flask import Flask, request, redirect, render_template, flash
 from email.message import EmailMessage
-from flask_cors import CORS
 import smtplib
 
 app = Flask(__name__, static_folder='assets')

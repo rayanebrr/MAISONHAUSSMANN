@@ -20,7 +20,7 @@ body {
   font-family: Inter Tight;
 }
 .display-1 {
-  font-family: 'Inter Tight', sans-serif;
+  font-family: 'Merriweather', serif;
   font-size: 5rem;
   line-height: 1;
 }
@@ -36,7 +36,7 @@ body {
   font-size: 3.75rem;
 }
 .display-4 {
-  font-family: 'Inter Tight', sans-serif;
+  font-family: 'Merriweather', serif;
   font-size: 1.4rem;
   line-height: 1.5;
 }
@@ -45,11 +45,11 @@ body {
 }
 .display-5 {
   font-family: 'Inter Tight', sans-serif;
-  font-size: 2rem;
+  font-size: 2.5rem;
   line-height: 1.5;
 }
 .display-5 > .mbr-iconfont {
-  font-size: 2.5rem;
+  font-size: 3.125rem;
 }
 .display-7 {
   font-family: 'Inter Tight', sans-serif;
@@ -86,9 +86,9 @@ body {
     line-height: calc( 1.4 * (1.14rem + (1.4 - 1.14) * ((100vw - 20rem) / (48 - 20))));
   }
   .display-5 {
-    font-size: 1.6rem;
-    font-size: calc( 1.35rem + (2 - 1.35) * ((100vw - 20rem) / (48 - 20)));
-    line-height: calc( 1.4 * (1.35rem + (2 - 1.35) * ((100vw - 20rem) / (48 - 20))));
+    font-size: 2rem;
+    font-size: calc( 1.525rem + (2.5 - 1.525) * ((100vw - 20rem) / (48 - 20)));
+    line-height: calc( 1.4 * (1.525rem + (2.5 - 1.525) * ((100vw - 20rem) / (48 - 20))));
   }
   .display-7 {
     font-size: 1.12rem;
@@ -113,9 +113,9 @@ body {
     line-height: calc( 1.4 * (1.14rem + (1.4 - 1.14) * ((100vw - 62rem) / (87 - 62))));
   }
   .display-5 {
-    font-size: 1.6rem;
-    font-size: calc( 1.35rem + (2 - 1.35) * ((100vw - 62rem) / (87 - 62)));
-    line-height: calc( 1.4 * (1.35rem + (2 - 1.35) * ((100vw - 62rem) / (87 - 62))));
+    font-size: 2rem;
+    font-size: calc( 1.525rem + (2.5 - 1.525) * ((100vw - 62rem) / (87 - 62)));
+    line-height: calc( 1.4 * (1.525rem + (2.5 - 1.525) * ((100vw - 62rem) / (87 - 62))));
   }
   .display-7 {
     font-size: 1.12rem;
@@ -127,11 +127,7 @@ body {
 .btn {
   padding: 1.25rem 2rem;
   border-radius: 4px;
-}
-@media (max-width: 767px) {
-  .btn {
-    padding: 0.75rem 1.5rem;
-  }
+  padding: 0.75rem 1.5rem;
 }
 .btn-sm {
   padding: 0.6rem 1.2rem;
@@ -1385,6 +1381,32 @@ a {
 }
 .cid-uIb8zLnBcE .mbr-section-title {
   color: #ffffff;
+}
+.cid-uIlGAD1liE {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  background-color: #ffffff;
+}
+.cid-uIlGAD1liE .mbr-fallback-image.disabled {
+  display: none;
+}
+.cid-uIlGAD1liE .mbr-fallback-image {
+  display: block;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
+.cid-uIlGAD1liE .mbr-section-title {
+  color: #e1ce9a;
+}
+.cid-uIlGAD1liE .mbr-section-subtitle DIV {
+  text-align: center;
+}
+.cid-uIlGAD1liE .mbr-section-subtitle {
+  color: #000000;
 }
 .cid-uIb8y9BQHf {
   z-index: 1000;
