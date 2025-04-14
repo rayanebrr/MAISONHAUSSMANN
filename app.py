@@ -16,6 +16,10 @@ def projet():
 def contact():
     return render_template("contact.html")
 
+@app.route("/a-propos")
+def a_propos():
+    return render_template("a_propos.html")
+
 @app.route('/contact', methods=["POST"])
 def mailDevis():
     email = request.form.get("email")
@@ -28,7 +32,7 @@ def mailDevis():
     msg.set_content(full_message)
     msg["Subject"] = "Demande de devis"
     msg["From"] = "demandedevis.maisonhaussmann@gmail.com"
-    msg["To"] = "mounioma@gmail.com"
+    msg["To"] = "contact@maisonhaussmann.fr"
 
     s = smtplib.SMTP("smtp.gmail.com", 587)
     s.starttls()
