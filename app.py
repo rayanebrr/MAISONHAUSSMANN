@@ -26,7 +26,7 @@ def mailDevis():
     phone = request.form.get("phone")
     description = request.form.get("textarea")
     
-    full_message = f"{description}\n\nEmail: {email}\nTéléphone: {phone}"
+    full_message = f"{description}\n\nEmail: {email}\n\nTéléphone: {phone}"
 
     msg = EmailMessage()
     msg.set_content(full_message)
