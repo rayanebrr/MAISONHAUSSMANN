@@ -22,11 +22,10 @@ def a_propos():
 
 @app.route('/contact', methods=["POST"])
 def mailDevis():
-    email = request.form.get("email")
     phone = request.form.get("phone")
     description = request.form.get("textarea")
     
-    full_message = f"{description}\n\nEmail: {email}\n\nTéléphone: {phone}"
+    full_message = f"{description}\n\nTéléphone: {phone}"
 
     msg = EmailMessage()
     msg.set_content(full_message)

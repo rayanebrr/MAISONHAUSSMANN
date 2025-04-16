@@ -58,6 +58,8 @@
     ],
     "uniqCompNum": 28,
     "versionPublish": "6.0.1",
+    "publishType": "local",
+    "publishPath": "@PROJECT_PATH@/Nouveau",
     "imageResize": true,
     "screenshot": "screenshot.png"
   },
