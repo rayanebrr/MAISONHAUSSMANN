@@ -1,172 +1,491 @@
 <!DOCTYPE html>
-<html  >
+<html lang="fr">
 <head>
-  <!-- Site made with Mobirise Website Builder v6.0.1, https://mobirise.com -->
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v6.0.1, mobirise.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="assets/images/maisonhaussman-vec.png" type="image/x-icon">
-  <meta name="description" content="">
-  
-  
-  <title>Contact / demande de devis</title>
-  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Merriweather:300,400,500,600,700,800,900,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:300,400,500,600,700,800,900,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=5SU5JD"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=5SU5JD" type="text/css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="assets/images/maisonhaussman-vec.png" type="image/png">
+  <meta name="description" content="Demander un devis gratuit — Maison HAUSSMANN. Rénovation et aménagement intérieur.">
+  <title>Demander un devis — Maison HAUSSMANN</title>
 
-  
-  
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { fontFamily: { sans: ['Outfit', 'system-ui', 'sans-serif'] } } }
+    }
+  </script>
+
+  <link rel="stylesheet" href="assets/css/main.css">
+  <style>
+    /* Contact layout */
+    .contact-wrapper {
+      min-height: 100dvh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 1023px) {
+      .contact-wrapper { grid-template-columns: 1fr; }
+    }
+
+    /* Left: form panel */
+    .contact-form-panel {
+      padding: 140px 72px 80px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    @media (max-width: 1280px) { .contact-form-panel { padding: 140px 48px 80px 48px; } }
+    @media (max-width: 768px) { .contact-form-panel { padding: 110px 24px 60px; } }
+
+    /* Right: image + info panel */
+    .contact-info-panel {
+      background-color: var(--text-primary);
+      padding: 140px 72px 80px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 1280px) { .contact-info-panel { padding: 140px 48px 80px; } }
+    @media (max-width: 1023px) { .contact-info-panel { padding: 60px 24px; } }
+
+    .contact-info-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 80%, rgba(160, 120, 74, 0.18) 0%, transparent 55%);
+    }
+
+    /* Contact form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-title {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .form-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } }
+
+    /* Submit button state */
+    .submit-btn {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .submit-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.12), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.5s var(--ease);
+    }
+
+    .submit-btn:hover::after { transform: translateX(100%); }
+
+    /* Info panel content */
+    .info-content { position: relative; z-index: 1; }
+
+    .info-title {
+      font-size: clamp(1.6rem, 2.5vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .info-subtitle {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.65;
+      margin-bottom: 48px;
+    }
+
+    .info-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .info-item:first-of-type { border-top: 1px solid rgba(255,255,255,0.07); }
+
+    .info-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--accent);
+    }
+
+    .info-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 4px;
+    }
+
+    .info-value {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .info-value:hover { color: #fff; }
+
+    /* Decorative large text */
+    .info-deco {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      font-size: 12rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      color: rgba(255,255,255,0.02);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* Map section */
+    .map-section {
+      padding: 0 0 80px;
+    }
+
+    .map-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 80px;
+    }
+
+    @media (max-width: 1280px) { .map-inner { padding: 0 48px; } }
+    @media (max-width: 768px) { .map-inner { padding: 0 24px; } }
+
+    .map-embed {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    /* Success notice */
+    .form-notice {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: 8px;
+    }
+  </style>
 </head>
+
 <body>
-  
-  <section data-bs-version="5.1" class="menu menu2 cid-uIb8y9BQHf" once="menu" id="menu02-4">
-	
 
-	<nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-		<div class="container">
-			<div class="navbar-brand">
-				<span class="navbar-logo">
-					<a href="/">
-						<img src="assets/images/maisonhaussman-vec.png" alt="Mobirise Website Builder" style="height: 5rem;">
-					</a>
-				</span>
-				<span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-4" href="/">Maison HAUSSMANN</a></span>
-			</div>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-				<div class="hamburger">
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item">
-						<a class="nav-link link text-black text-primary display-4" href="/" aria-expanded="false">Accueil</a>
-					</li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="/projets">Projets</a></li>
-					<li class="nav-item">
-						<a class="nav-link link text-black text-primary display-4" href="/a-propos">A propos</a>
-					</li></ul>
-				
-				<div class="navbar-buttons mbr-section-btn"><a class="btn btn-danger display-4" href="/contact">Demander un devis</a></div>
-			</div>
-		</div>
-	</nav>
-</section>
+<!-- ═══════════════════ NAVBAR ═══════════════════ -->
+<nav id="navbar" class="scrolled">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="assets/images/maisonhaussman-vec.png" alt="Maison HAUSSMANN">
+      <span class="nav-logo-text hidden sm:block">Maison HAUSSMANN</span>
+    </a>
 
-<section data-bs-version="5.1" class="form03 cid-uIbbY2LuTB" id="form03-6">
-<br>
+    <ul class="nav-links">
+      <li><a href="/" class="nav-link">Accueil</a></li>
+      <li><a href="/projets" class="nav-link">Projets</a></li>
+      <li><a href="/a-propos" class="nav-link">À propos</a></li>
+    </ul>
 
-    
+    <a href="/contact" class="btn btn-primary hidden lg:inline-flex" style="pointer-events: none; opacity: 0.5;">Demander un devis</a>
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg item-wrapper">
-                <div class="mbr-section-head mb-5">
-                    <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"><strong>Demander un devis</strong></h3>
-                    
-                </div>
-                <div class="col-lg-12 mx-auto mbr-form">
-                    <form action="/contact" method="POST" class="mbr-form form-with-styler" data-verified="">
-                        <div class="row">
-                            
-                            <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
-                                Oops...! some problem!
-                            </div>
-                        </div>
-                        <div class="dragArea row">
-                            
-                            
-                            <div class="col-12 form-group mb-3 mb-3" data-for="phone">
-                                <input type="tel" name="phone" placeholder="Téléphone" data-form-field="phone" class="form-control" value="" id="phone-form03-6">
-                            </div>
-                            <div class="col-12 form-group mb-3 mb-3" data-for="textarea">
-                                <textarea name="textarea" placeholder="Description" data-form-field="textarea" class="form-control" id="textarea-form03-6"></textarea>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn"><button type="submit" class="btn btn-danger display-7">Demander votre devis</button></div>
-                        </div>
-                    </form>
-                </div>
+    <button id="hamburger" class="nav-hamburger lg:hidden" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 
-
-            </div>
-            <div class="col-12 col-lg-6">
-                <div class="image-wrapper">
-                    <img class="w-100" src="assets/images/68a334ad-d4aa-4f8d-8b3e-9cf3c4572b65.jpeg" alt="Mobirise Website Builder">
-                </div>
-            </div>
-
-        </div>
+  <div id="mobile-menu">
+    <div class="mobile-menu-inner">
+      <a href="/" class="mobile-nav-link">Accueil</a>
+      <a href="/projets" class="mobile-nav-link">Projets</a>
+      <a href="/a-propos" class="mobile-nav-link">À propos</a>
+      <div class="btn btn-primary" style="align-self: flex-start; margin-top: 8px; opacity: 0.5;">Demander un devis</div>
     </div>
-</section>
+  </div>
+</nav>
 
-<section data-bs-version="5.1" class="image3 cid-uIqxUy4CnD" id="image03-k">
-  
 
-  
-  
+<!-- ═══════════════════ MAIN LAYOUT ═══════════════════ -->
+<div class="contact-wrapper">
 
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12 col-lg-9">
-        <h4 class="mbr-description mbr-fonts-style mb-3 align-center display-2">
-          <strong>Labels &amp; Certifications</strong></h4>
-        
-        <div class="image-wrapper">
-          <img class="w-100" src="assets/images/certification.png-1254x545.png" alt="Mobirise Website Builder">
+  <!-- Left: Form -->
+  <div class="contact-form-panel">
+    <div class="reveal">
+      <div class="accent-bar"></div>
+      <h1 class="form-title">Demander<br>un devis</h1>
+      <p class="form-subtitle">
+        Décrivez votre projet et nous vous recontactons sous 24h pour établir un devis personnalisé et gratuit.
+      </p>
+    </div>
+
+    <form action="/contact" method="POST" class="contact-form reveal d2" id="contact-form">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="email" class="form-label">Adresse e-mail</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-input"
+            placeholder="vous@exemple.fr"
+            required
+          >
+        </div>
+        <div class="form-field">
+          <label for="phone" class="form-label">Téléphone</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            class="form-input"
+            placeholder="+33 6 xx xx xx xx"
+          >
         </div>
       </div>
+
+      <div class="form-field">
+        <label for="textarea" class="form-label">Description du projet</label>
+        <textarea
+          id="textarea"
+          name="textarea"
+          class="form-textarea"
+          placeholder="Décrivez votre projet : type de travaux, surface, délais souhaités, budget approximatif..."
+          rows="6"
+        ></textarea>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 8px;">
+        <button type="submit" class="btn btn-primary submit-btn" style="padding: 15px 36px; font-size: 0.9rem;">
+          Envoyer ma demande
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+        <p class="form-notice">Réponse garantie sous 24h ouvrées.</p>
+      </div>
+    </form>
+  </div>
+
+  <!-- Right: Info -->
+  <div class="contact-info-panel">
+    <div class="info-content reveal-xr">
+      <span class="eyebrow" style="color: var(--accent);">Nous contacter</span>
+      <h2 class="info-title">Restons<br>en contact</h2>
+      <p class="info-subtitle">Notre équipe est disponible du lundi au vendredi pour répondre à toutes vos questions.</p>
+
+      <div class="info-item">
+        <div class="info-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="info-label">Téléphone</div>
+          <a href="tel:+33143033292" class="info-value">+33 1 43 03 32 92</a>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
+          </svg>
+        </div>
+        <div>
+          <div class="info-label">E-mail</div>
+          <a href="mailto:contact@maisonhaussmann.fr" class="info-value">contact@maisonhaussmann.fr</a>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="info-label">Adresse</div>
+          <span class="info-value" style="cursor: default;">2 Allée Bienvenue, 93160 Noisy-le-Grand</span>
+        </div>
+      </div>
+
+      <div class="info-item" style="border-bottom: none;">
+        <div class="info-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="info-label">Horaires</div>
+          <span class="info-value" style="cursor: default;">Lun — Ven, 9h30 – 19h30</span>
+        </div>
+      </div>
+
+      <!-- Image -->
+      <div style="margin-top: 48px; border-radius: 4px; overflow: hidden; height: 220px;" class="img-wrap">
+        <img
+          src="assets/images/68a334ad-d4aa-4f8d-8b3e-9cf3c4572b65.jpeg"
+          alt="Maison HAUSSMANN"
+          style="width:100%; height:100%; object-fit:cover; opacity: 0.7;"
+        >
+      </div>
+    </div>
+
+    <div class="info-deco">H</div>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════ MAP ═══════════════════ -->
+<section class="map-section" style="padding-top: 64px;">
+  <div class="map-inner">
+    <div class="reveal" style="margin-bottom: 24px;">
+      <span class="eyebrow">Nous trouver</span>
+      <h2 class="section-title" style="font-size: 1.6rem;">2 Allée Bienvenue, Noisy-le-Grand</h2>
+    </div>
+    <div class="reveal d1">
+      <iframe
+        class="map-embed"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37439.982603538534!2d2.4806323854805057!3d48.828454911036395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e60d5392ab5d95%3A0x40897c15360c082a!2sMaison%20Haussmann!5e0!3m2!1sfr!2sfr!4v1744673730261!5m2!1sfr!2sfr"
+        allowfullscreen loading="lazy">
+      </iframe>
     </div>
   </div>
 </section>
 
-<section data-bs-version="5.1" class="contacts02 map1 cid-uIbbTy3htt" id="contacts02-5">
 
-    
-
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 content-head">
-                <div class="mbr-section-head mb-5">
-                    <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
-                        <strong>Contact</strong></h3>
-                    
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="card col-12 col-md-12 col-lg-6">
-                <div class="card-wrapper">
-                    <div class="text-wrapper">
-                        <h5 class="cardTitle mbr-fonts-style mb-2 display-5">
-                            <strong>Contactez-nous</strong></h5>
-                        <ul class="list mbr-fonts-style display-7">
-                            <li class="mbr-text item-wrap">Phone: <a href="tel:+33 1 43 03 32 92" class="text-danger">+33 1 43 03 32 92</a></li>
-                            <li class="mbr-text item-wrap">Email: <a href="mailto:info@site.com" class="text-danger">contact@maisonhaussmann.fr</a></li>
-                            <li class="mbr-text item-wrap">Adresse: 2 Allée Bienvenue 93160 Noisy-le-Grand</li>
-                            <li class="mbr-text item-wrap">Horaires: Du Lundi au Vendredi de 9H30 à 19H30</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="map-wrapper col-md-12 col-lg-6">
-                <div class="google-map"><iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37439.982603538534!2d2.4806323854805057!3d48.828454911036395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e60d5392ab5d95%3A0x40897c15360c082a!2sMaison%20Haussmann!5e0!3m2!1sfr!2sfr!4v1744673730261!5m2!1sfr!2sfr" allowfullscreen=""></iframe></div>
-            </div>
-        </div>
+<!-- ═══════════════════ CERTIFICATIONS ═══════════════════ -->
+<section style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 52px 0; margin-top: 64px;">
+  <div style="max-width: 1400px; margin: 0 auto; padding: 0 48px 28px; text-align: center;" class="reveal">
+    <span class="eyebrow" style="display: inline-block;">Labels &amp; Certifications</span>
+  </div>
+  <div class="marquee-outer">
+    <div class="marquee-track">
+      <img src="assets/images/certif/Qualicoat-logo-web.png" alt="Qualicoat" class="cert-logo">
+      <img src="assets/images/certif/acotherm-logo-grand.png" alt="Acotherm" class="cert-logo">
+      <img src="assets/images/certif/ce-marking.png" alt="Marquage CE" class="cert-logo" style="height:32px;">
+      <img src="assets/images/certif/isol-habitat-cambrai-logo-cstbat.png" alt="CSTBAT" class="cert-logo">
+      <img src="assets/images/certif/logo-cekal-hd.png" alt="Cekal" class="cert-logo">
+      <img src="assets/images/certif/logo_NFH.png" alt="NFH" class="cert-logo">
+      <img src="assets/images/certif/Qualicoat-logo-web.png" alt="Qualicoat" class="cert-logo">
+      <img src="assets/images/certif/acotherm-logo-grand.png" alt="Acotherm" class="cert-logo">
+      <img src="assets/images/certif/ce-marking.png" alt="Marquage CE" class="cert-logo" style="height:32px;">
+      <img src="assets/images/certif/isol-habitat-cambrai-logo-cstbat.png" alt="CSTBAT" class="cert-logo">
+      <img src="assets/images/certif/logo-cekal-hd.png" alt="Cekal" class="cert-logo">
+      <img src="assets/images/certif/logo_NFH.png" alt="NFH" class="cert-logo">
     </div>
-<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
-  
-  
+  </div>
+</section>
+
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
+      <div class="reveal">
+        <img
+          src="assets/images/maisonhaussman-vec.png"
+          alt="Maison HAUSSMANN"
+          style="height: 36px; width: auto; margin-bottom: 20px; filter: brightness(0) invert(1); opacity: 0.7;"
+        >
+        <p style="max-width: 36ch; margin-bottom: 28px;">
+          Expert du patrimoine immobilier. Rénovation et aménagement intérieur haut de gamme.
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <a href="tel:+33143033292" class="footer-link">+33 1 43 03 32 92</a>
+          <a href="mailto:contact@maisonhaussmann.fr" class="footer-link">contact@maisonhaussmann.fr</a>
+          <span>2 Allée Bienvenue, 93160 Noisy-le-Grand</span>
+          <span>Lun — Ven, 9h30 – 19h30</span>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <h3 style="color: rgba(255,255,255,0.7); font-size: 0.875rem; font-weight: 500; margin-bottom: 20px;">Navigation</h3>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <a href="/" class="footer-link">Accueil</a>
+          <a href="/projets" class="footer-link">Projets</a>
+          <a href="/a-propos" class="footer-link">À propos</a>
+          <a href="/contact" class="footer-link">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span style="color: rgba(255,255,255,0.25); font-size: 0.8rem;">© 2025 Maison HAUSSMANN. Tous droits réservés.</span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+
+  const revealEls = document.querySelectorAll('.reveal, .reveal-x, .reveal-xr');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+
+  revealEls.forEach(el => observer.observe(el));
+  requestAnimationFrame(() => {
+    revealEls.forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('in');
+    });
+  });
+</script>
+
 </body>
 </html>

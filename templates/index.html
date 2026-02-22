@@ -1,165 +1,508 @@
 <!DOCTYPE html>
-<html  >
+<html lang="fr">
 <head>
-  <!-- Site made with Mobirise Website Builder v6.0.1, https://mobirise.com -->
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v6.0.1, mobirise.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="assets/images/maisonhaussman-vec.png" type="image/x-icon">
-  <meta name="description" content="">
-  
-  
-  <title>Home</title>
-  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/parallax/jarallax.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Merriweather:300,400,500,600,700,800,900,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:300,400,500,600,700,800,900,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=i2eEC6"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=i2eEC6" type="text/css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="assets/images/maisonhaussman-vec.png" type="image/png">
+  <meta name="description" content="Maison HAUSSMANN — Expert du patrimoine immobilier. Rénovation et aménagement intérieur haut de gamme.">
+  <title>Maison HAUSSMANN — Expert du patrimoine immobilier</title>
 
-  
-  
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { fontFamily: { sans: ['Outfit', 'system-ui', 'sans-serif'] } } }
+    }
+  </script>
+
+  <link rel="stylesheet" href="assets/css/main.css">
+  <style>
+    /* Hero specific */
+    .hero-section {
+      min-height: 100dvh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 1023px) {
+      .hero-section {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 45vh;
+      }
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 140px 64px 80px 80px;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (max-width: 1280px) { .hero-content { padding: 140px 48px 80px 48px; } }
+    @media (max-width: 1023px) { .hero-content { padding: 110px 24px 56px; } }
+
+    .hero-h1 {
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+
+    .hero-h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-image-col {
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 1023px) {
+      .hero-image-col { min-height: 0; }
+    }
+
+    .hero-image-col img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 8s ease-out;
+    }
+
+    .hero-image-col:hover img { transform: scale(1.03); }
+
+    /* Gradient fade from left edge of image into bg */
+    .hero-image-fade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        var(--bg) 0%,
+        rgba(248, 246, 242, 0.3) 25%,
+        transparent 55%
+      );
+      z-index: 1;
+    }
+
+    @media (max-width: 1023px) {
+      .hero-image-fade {
+        background: linear-gradient(
+          to top,
+          var(--bg) 0%,
+          rgba(248, 246, 242, 0.5) 30%,
+          transparent 60%
+        );
+      }
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 56px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 480px) { .hero-stats { gap: 24px; } }
+
+    .stat-divider {
+      width: 1px;
+      background: var(--border);
+      align-self: stretch;
+    }
+
+    /* Services */
+    .services-section {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 100px 80px;
+    }
+
+    @media (max-width: 1280px) { .services-section { padding: 80px 48px; } }
+    @media (max-width: 768px) { .services-section { padding: 64px 24px; } }
+
+    .service-row {
+      display: grid;
+      grid-template-columns: 5fr 6fr;
+      gap: 80px;
+      align-items: center;
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .service-row.reversed { grid-template-columns: 6fr 5fr; }
+    .service-row.reversed .service-text { order: 2; }
+    .service-row.reversed .service-image { order: 1; }
+
+    @media (max-width: 1023px) {
+      .service-row,
+      .service-row.reversed {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .service-row.reversed .service-text { order: 1; }
+      .service-row.reversed .service-image { order: 2; }
+    }
+
+    .service-number {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .service-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+    }
+
+    .service-image {
+      aspect-ratio: 16 / 10;
+    }
+
+    /* CTA band */
+    .cta-band {
+      background-color: var(--text-primary);
+      padding: 80px 80px;
+    }
+
+    @media (max-width: 1280px) { .cta-band { padding: 72px 48px; } }
+    @media (max-width: 768px) { .cta-band { padding: 56px 24px; } }
+
+    .cta-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    @media (max-width: 1023px) {
+      .cta-inner { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    .cta-title {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: #fff;
+      line-height: 1.15;
+    }
+
+    .cta-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+  </style>
 </head>
+
 <body>
-  
-  <section data-bs-version="5.1" class="menu menu2 cid-uIb8y9BQHf" once="menu" id="menu02-0">
-	
 
-	<nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-		<div class="container">
-			<div class="navbar-brand">
-				<span class="navbar-logo">
-					<a href="/">
-						<img src="assets/images/maisonhaussman-vec.png" alt="Mobirise Website Builder" style="height: 5rem;">
-					</a>
-				</span>
-				<span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-4" href="/">Maison HAUSSMANN</a></span>
-			</div>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-				<div class="hamburger">
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item">
-						<a class="nav-link link text-black text-primary display-4" href="/" aria-expanded="false">Accueil</a>
-					</li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="/projets">Projets</a></li>
-					<li class="nav-item">
-						<a class="nav-link link text-black text-primary display-4" href="/a-propos">A propos</a>
-					</li></ul>
-				
-				<div class="navbar-buttons mbr-section-btn"><a class="btn btn-danger display-4" href="/contact">Demander un devis</a></div>
-			</div>
-		</div>
-	</nav>
+<!-- ═══════════════════ NAVBAR ═══════════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="assets/images/maisonhaussman-vec.png" alt="Maison HAUSSMANN">
+      <span class="nav-logo-text hidden sm:block">Maison HAUSSMANN</span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="/" class="nav-link active">Accueil</a></li>
+      <li><a href="/projets" class="nav-link">Projets</a></li>
+      <li><a href="/a-propos" class="nav-link">À propos</a></li>
+    </ul>
+
+    <a href="/contact" class="btn btn-primary hidden lg:inline-flex">Demander un devis</a>
+
+    <button id="hamburger" class="nav-hamburger lg:hidden" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div id="mobile-menu">
+    <div class="mobile-menu-inner">
+      <a href="/" class="mobile-nav-link" style="color: var(--text-primary); font-weight: 500;">Accueil</a>
+      <a href="/projets" class="mobile-nav-link">Projets</a>
+      <a href="/a-propos" class="mobile-nav-link">À propos</a>
+      <a href="/contact" class="btn btn-primary" style="align-self: flex-start; margin-top: 8px;">Demander un devis</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero-section">
+
+  <!-- Left: content -->
+  <div class="hero-content">
+    <span class="eyebrow reveal">Expert du patrimoine immobilier</span>
+
+    <h1 class="hero-h1 reveal d1">
+      Votre intérieur,<br>
+      <em>réinventé.</em>
+    </h1>
+
+    <p class="reveal d2" style="font-size: 0.95rem; line-height: 1.75; color: var(--text-secondary); max-width: 46ch; margin-bottom: 36px;">
+      De la conception à la livraison, notre équipe d'artisans spécialisés prend en charge votre projet de rénovation avec rigueur et exigence.
+    </p>
+
+    <div class="reveal d3" style="display: flex; flex-wrap: wrap; gap: 14px;">
+      <a href="/projets" class="btn btn-primary">Voir nos réalisations</a>
+      <a href="/contact" class="btn btn-ghost">Demander un devis</a>
+    </div>
+
+    <!-- Stats -->
+    <div class="hero-stats reveal d4">
+      <div>
+        <div class="stat-number">10<span class="stat-unit">ans</span></div>
+        <div class="stat-label">Garantie décennale</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div>
+        <div class="stat-number">6</div>
+        <div class="stat-label">Certifications</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div>
+        <div class="stat-number">5</div>
+        <div class="stat-label">Mensualités sans frais</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: image -->
+  <div class="hero-image-col">
+    <div class="hero-image-fade"></div>
+    <img
+      src="assets/images/68a334ad-d4aa-4f8d-8b3e-9cf3c4572b65.jpeg"
+      alt="Rénovation intérieure Maison HAUSSMANN"
+    >
+  </div>
+
 </section>
 
-<section data-bs-version="5.1" class="header16 cid-uIb8zLnBcE mbr-fullscreen mbr-parallax-background" id="header17-1">
 
-  
-  <div class="container-fluid">
-    <div class="row">
-      <div class="content-wrap col-12 col-md-12">
-        <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-4 display-1">
-          <strong><br>Maison HAUSSMANN</strong></h1>
-        
-        <p class="mbr-fonts-style mbr-text mbr-white mb-4 display-7"><strong>Expert du patrimoine immobilier</strong></p>
-        <div class="mbr-section-btn"><a class="btn btn-white-outline display-7" href="/projets">Voir nos différents projets</a></div>
-      </div>
+<!-- ═══════════════════ SERVICES ═══════════════════ -->
+<section class="services-section">
+  <div style="margin-bottom: 24px;" class="reveal">
+    <div class="accent-bar"></div>
+    <h2 class="section-title">Un accompagnement<br>complet et exigeant</h2>
+  </div>
+
+  <!-- Service 01 -->
+  <div class="service-row">
+    <div class="service-text reveal-x">
+      <div class="service-number">01</div>
+      <h3 class="service-title">Étude personnalisée</h3>
+      <p class="section-body">
+        Nous écoutons vos besoins pour concevoir un espace adapté à votre style de vie. Chaque projet démarre par une rencontre approfondie pour cerner vos attentes avec précision.
+      </p>
+    </div>
+    <div class="service-image img-wrap reveal-xr">
+      <img
+        src="assets/images/3d281614-a192-4905-8afc-91707e288319.jpeg"
+        alt="Étude personnalisée"
+        style="width:100%; height:100%; object-fit:cover;"
+      >
+    </div>
+  </div>
+
+  <!-- Service 02 (reversed) -->
+  <div class="service-row reversed">
+    <div class="service-text reveal-xr">
+      <div class="service-number">02</div>
+      <h3 class="service-title">Gestion globale</h3>
+      <p class="section-body">
+        Coordination de tous les corps de métier, respect rigoureux des délais et du budget. Un seul interlocuteur du premier rendez-vous jusqu'à la livraison.
+      </p>
+    </div>
+    <div class="service-image img-wrap reveal-x">
+      <img
+        src="assets/images/gallery/810069a5-7068-4d3a-ab81-758ad9bd640b.JPG"
+        alt="Gestion de chantier"
+        style="width:100%; height:100%; object-fit:cover;"
+      >
+    </div>
+  </div>
+
+  <!-- Service 03 -->
+  <div class="service-row" style="border-bottom: none;">
+    <div class="service-text reveal-x">
+      <div class="service-number">03</div>
+      <h3 class="service-title">Réalisation haut de gamme</h3>
+      <p class="section-body">
+        Un savoir-faire artisanal pour un résultat d'exception. Tous nos produits sont certifiés NF et CE, garantis 10 ans pièces, main d'œuvre et déplacement.
+      </p>
+    </div>
+    <div class="service-image img-wrap reveal-xr">
+      <img
+        src="assets/images/gallery/d2d4ddbd-0ce4-4054-8fa0-469cfeea7c07.JPG"
+        alt="Réalisation haut de gamme"
+        style="width:100%; height:100%; object-fit:cover;"
+      >
     </div>
   </div>
 </section>
 
-<section data-bs-version="5.1" class="article11 cid-uIlGAD1liE" id="article11-b">
-    
 
-    
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="title col-md-12 col-lg-10">
-                <h3 class="mbr-section-title mbr-fonts-style align-center mt-0 mb-0 display-5"><strong>Transformez votre intérieur avec un projet sur-mesure, conçu et réalisé par des experts</strong></h3>
-                <h4 class="mbr-section-subtitle align-center mbr-fonts-style mt-4 display-7"><div>Vous rêvez d’un intérieur qui vous ressemble, alliant esthétique, fonctionnalité et qualité d’exécution, notre équipe de maîtrise d’ouvrages et artisans spécialisés prend en charge votre projet de rénovation ou d’aménagement, dès la première rencontre jusqu'à la livraison avec rigueur et passion.</div><br><div><strong>Un accompagnement complet et exigeant :</strong></div><div><br></div><div><strong>Étude personnalisée :</strong> Nous écoutons vos besoins pour concevoir un espace adapté à votre style de vie.</div><div><br></div><div><strong>Gestion globale :</strong> Coordination des corps de métier, respect des délais et du budget.
-</div><div><br></div><div><strong>Réalisation haut de gamme :</strong> Un savoir-faire artisanal pour un résultat d’exception.</div><div><br></div><div><em>Votre satisfaction est notre plus belle réalisation.</em></div><div>
-</div><div>
-</div><div>
-</div><div>
-</div><div>
-</div></h4>
-                
-            </div>
-        </div>
-    </div>
-</section>
+<!-- ═══════════════════ CERTIFICATIONS MARQUEE ═══════════════════ -->
+<section style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 52px 0;">
+  <div style="max-width: 1400px; margin: 0 auto; padding: 0 48px 28px; text-align: center;" class="reveal">
+    <span class="eyebrow" style="display: inline-block;">Labels &amp; Certifications</span>
+  </div>
 
-<section data-bs-version="5.1" class="image3 cid-uIqASVB1wf" id="image03-n">
-  
-
-  
-  
-
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12 col-lg-9">
-        <h4 class="mbr-description mbr-fonts-style mb-3 align-center display-5"><strong>Labels &amp; Certifications</strong></h4>
-        
-        <div class="image-wrapper">
-          <img class="w-100" src="assets/images/certification.png-1254x545.png" alt="Mobirise Website Builder">
-        </div>
-      </div>
+  <div class="marquee-outer">
+    <div class="marquee-track">
+      <img src="assets/images/certif/Qualicoat-logo-web.png" alt="Qualicoat" class="cert-logo">
+      <img src="assets/images/certif/acotherm-logo-grand.png" alt="Acotherm" class="cert-logo">
+      <img src="assets/images/certif/ce-marking.png" alt="Marquage CE" class="cert-logo" style="height:32px;">
+      <img src="assets/images/certif/isol-habitat-cambrai-logo-cstbat.png" alt="CSTBAT" class="cert-logo">
+      <img src="assets/images/certif/logo-cekal-hd.png" alt="Cekal" class="cert-logo">
+      <img src="assets/images/certif/logo_NFH.png" alt="NFH" class="cert-logo">
+      <!-- Duplicate for seamless loop -->
+      <img src="assets/images/certif/Qualicoat-logo-web.png" alt="Qualicoat" class="cert-logo">
+      <img src="assets/images/certif/acotherm-logo-grand.png" alt="Acotherm" class="cert-logo">
+      <img src="assets/images/certif/ce-marking.png" alt="Marquage CE" class="cert-logo" style="height:32px;">
+      <img src="assets/images/certif/isol-habitat-cambrai-logo-cstbat.png" alt="CSTBAT" class="cert-logo">
+      <img src="assets/images/certif/logo-cekal-hd.png" alt="Cekal" class="cert-logo">
+      <img src="assets/images/certif/logo_NFH.png" alt="NFH" class="cert-logo">
     </div>
   </div>
 </section>
 
-<section data-bs-version="5.1" class="contacts02 map1 cid-uIo4RR7UYd" id="contacts02-h">
 
-    
-
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 content-head">
-                <div class="mbr-section-head mb-5">
-                    <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
-                        <strong>Contact</strong></h3>
-                    
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="card col-12 col-md-12 col-lg-6">
-                <div class="card-wrapper">
-                    <div class="text-wrapper">
-                        <h5 class="cardTitle mbr-fonts-style mb-2 display-5">
-                            <strong>Contactez-nous</strong>
-                        </h5>
-                        <ul class="list mbr-fonts-style display-7">
-                            <li class="mbr-text item-wrap">Téléphone: <a href="tel: +33 1 43 03 32 92" class="text-danger">+33 1 43 03 32 92</a></li>
-                            <li class="mbr-text item-wrap">Email: <a href="mailto:contact@maisonhaussmann.fr" class="text-danger">contact@maisonhaussmann.fr</a></li>
-                            <li class="mbr-text item-wrap">Address: 2 Allée Bienvenue 93160 Noisy-le-Grand</li>
-                            <li class="mbr-text item-wrap">Horaires: Du Lundi au Vendredi 9H30 à 19H30</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="map-wrapper col-md-12 col-lg-6">
-                <div class="google-map"><iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37439.982603538534!2d2.4806323854805057!3d48.828454911036395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e60d5392ab5d95%3A0x40897c15360c082a!2sMaison%20Haussmann!5e0!3m2!1sfr!2sfr!4v1744673730261!5m2!1sfr!2sfr" allowfullscreen=""></iframe></div>
-            </div>
-        </div>
+<!-- ═══════════════════ CTA BAND ═══════════════════ -->
+<section class="cta-band">
+  <div class="cta-inner">
+    <div class="reveal">
+      <span class="eyebrow" style="color: var(--accent);">Votre satisfaction, notre engagement</span>
+      <h2 class="cta-title">Prêt à transformer<br>votre espace ?</h2>
     </div>
-<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/parallax/jarallax.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
-  
-  
+    <div class="cta-actions reveal d2">
+      <a href="/contact" class="btn btn-primary">Demander un devis gratuit</a>
+      <a href="/projets" class="btn btn-ghost-white">Voir nos projets</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
+
+      <div class="reveal">
+        <img
+          src="assets/images/maisonhaussman-vec.png"
+          alt="Maison HAUSSMANN"
+          style="height: 36px; width: auto; margin-bottom: 20px; filter: brightness(0) invert(1); opacity: 0.7;"
+        >
+        <p style="max-width: 36ch; margin-bottom: 28px;">
+          Expert du patrimoine immobilier. Rénovation et aménagement intérieur haut de gamme, de la conception à la livraison.
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <a href="tel:+33143033292" class="footer-link">+33 1 43 03 32 92</a>
+          <a href="mailto:contact@maisonhaussmann.fr" class="footer-link">contact@maisonhaussmann.fr</a>
+          <span>2 Allée Bienvenue, 93160 Noisy-le-Grand</span>
+          <span>Lun — Ven, 9h30 – 19h30</span>
+        </div>
+      </div>
+
+      <div class="reveal d2" style="height: 280px; border-radius: 4px; overflow: hidden;">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37439.982603538534!2d2.4806323854805057!3d48.828454911036395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e60d5392ab5d95%3A0x40897c15360c082a!2sMaison%20Haussmann!5e0!3m2!1sfr!2sfr!4v1744673730261!5m2!1sfr!2sfr"
+          width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy">
+        </iframe>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span style="color: rgba(255,255,255,0.25); font-size: 0.8rem;">© 2025 Maison HAUSSMANN. Tous droits réservés.</span>
+      <div style="display: flex; gap: 24px;">
+        <a href="/" class="footer-link" style="font-size: 0.8rem;">Accueil</a>
+        <a href="/projets" class="footer-link" style="font-size: 0.8rem;">Projets</a>
+        <a href="/a-propos" class="footer-link" style="font-size: 0.8rem;">À propos</a>
+        <a href="/contact" class="footer-link" style="font-size: 0.8rem;">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════ JS ═══════════════════ -->
+<script>
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal, .reveal-x, .reveal-xr');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  revealEls.forEach(el => observer.observe(el));
+
+  // Immediate reveal for elements already in viewport
+  requestAnimationFrame(() => {
+    revealEls.forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight) {
+        el.classList.add('in');
+      }
+    });
+  });
+
+  // Marquee — dynamic cloning so logos always fill the screen on every viewport size
+  window.addEventListener('load', function () {
+    const track = document.querySelector('.marquee-track');
+    if (!track) return;
+
+    // HTML already has 2 sets of 6 logos — compute one set's real pixel width
+    const ORIGINAL_SET_SIZE = 6;
+    const oneSetPx = track.scrollWidth / 2;
+
+    // Clone sets until the track is ≥ 3× viewport wide (guarantees seamless fill)
+    const setsNeeded = Math.ceil((window.innerWidth * 3) / oneSetPx);
+    const firstSet = [...track.querySelectorAll('.cert-logo')].slice(0, ORIGINAL_SET_SIZE);
+
+    for (let i = 2; i < setsNeeded; i++) {
+      firstSet.forEach(logo => track.appendChild(logo.cloneNode(true)));
+    }
+
+    // Override the CSS animation offset with exact pixels (no percentage rounding)
+    track.style.setProperty('--marquee-offset', `-${oneSetPx}px`);
+  });
+</script>
+
 </body>
 </html>

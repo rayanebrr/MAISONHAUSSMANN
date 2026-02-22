@@ -1,185 +1,937 @@
 <!DOCTYPE html>
-<html  >
+<html lang="fr">
 <head>
-  <!-- Site made with Mobirise Website Builder v6.0.1, https://mobirise.com -->
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v6.0.1, mobirise.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="assets/images/maisonhaussman-vec.png" type="image/x-icon">
-  <meta name="description" content="">
-  
-  
-  <title>Projet</title>
-  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Merriweather:300,400,500,600,700,800,900,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:300,400,500,600,700,800,900,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter+Tight:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=uEiiiy"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=uEiiiy" type="text/css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="assets/images/maisonhaussman-vec.png" type="image/png">
+  <meta name="description" content="Galerie de projets — Maison HAUSSMANN. Salle de bain, menuiserie, cuisines, sols, remise en état.">
+  <title>Projets — Maison HAUSSMANN</title>
 
-  
-  
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { fontFamily: { sans: ['Outfit', 'system-ui', 'sans-serif'] } } }
+    }
+  </script>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+
+  <style>
+    /* ── Page banner ── */
+    .projets-banner {
+      padding: 148px 80px 64px;
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: end;
+    }
+    @media (max-width: 1280px) { .projets-banner { padding: 140px 48px 56px; } }
+    @media (max-width: 1023px) { .projets-banner { grid-template-columns: 1fr; gap: 16px; padding: 120px 24px 48px; } }
+
+    .banner-title {
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.07;
+      color: var(--text-primary);
+    }
+
+    /* ── Category section ── */
+    .cat-section {
+      padding: 56px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .cat-section:first-of-type { border-top: none; }
+
+    .cat-section-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 80px;
+    }
+    @media (max-width: 1280px) { .cat-section-inner { padding: 0 48px; } }
+    @media (max-width: 768px)  { .cat-section-inner { padding: 0 24px; } }
+
+    /* Section header */
+    .cat-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .cat-title {
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--text-primary);
+    }
+
+    .cat-count {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+    }
+
+    /* ── Horizontal strip ── */
+    .strip-outer {
+      /* Bleed beyond the inner padding to allow negative-margin trick */
+      overflow: hidden;
+      margin: 0 -80px;
+      padding: 0 80px;
+    }
+    @media (max-width: 1280px) { .strip-outer { margin: 0 -48px; padding: 0 48px; } }
+    @media (max-width: 768px)  { .strip-outer { margin: 0 -24px; padding: 0 24px; } }
+
+    .strip {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding-bottom: 16px;
+      scroll-behavior: smooth;
+      cursor: grab;
+      user-select: none;
+      /* Custom thin scrollbar */
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .strip::-webkit-scrollbar { height: 4px; }
+    .strip::-webkit-scrollbar-track { background: transparent; }
+    .strip::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+    .strip:active { cursor: grabbing; }
+
+    /* Strip image tile */
+    .strip-tile {
+      flex-shrink: 0;
+      width: 280px;
+      height: 210px;
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;
+      display: block;
+      text-decoration: none;
+    }
+
+    .strip-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    .strip-tile:hover img { transform: scale(1.06); }
+
+    .strip-tile-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(26, 25, 23, 0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+
+    .strip-tile:hover .strip-tile-overlay { background: rgba(26, 25, 23, 0.3); }
+
+    .strip-zoom-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 0.25s, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .strip-tile:hover .strip-zoom-icon {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Video tile in strip */
+    .strip-tile-video {
+      flex-shrink: 0;
+      width: 280px;
+      height: 210px;
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .strip-tile-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .strip-video-badge {
+      position: absolute;
+      top: 8px; right: 8px;
+      background: rgba(26, 25, 23, 0.75);
+      color: rgba(255,255,255,0.9);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+
+    /* "Voir plus" card (always last in strip) */
+    .voir-plus-card {
+      flex-shrink: 0;
+      width: 180px;
+      height: 210px;
+      border-radius: 5px;
+      background: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      border: none;
+      font-family: 'Outfit', system-ui, sans-serif;
+      text-decoration: none;
+      color: rgba(255,255,255,0.75);
+      transition: background-color 0.25s, transform 0.15s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .voir-plus-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 120%, rgba(160, 120, 74, 0.4) 0%, transparent 70%);
+    }
+
+    .voir-plus-card:hover { background: var(--accent); color: #fff; transform: scale(1.02); }
+
+    .vp-count {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: #fff;
+    }
+
+    .vp-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* Arrow icon on voir plus */
+    .vp-arrow {
+      margin-top: 10px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, transform 0.25s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .voir-plus-card:hover .vp-arrow {
+      border-color: rgba(255,255,255,0.6);
+      transform: translateY(-2px);
+    }
+
+    /* Empty state inside strip */
+    .strip-empty {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 32px 28px;
+      border: 1px dashed var(--border);
+      border-radius: 5px;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+
+    .strip-empty-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--border);
+    }
+
+    .strip-empty-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 2px;
+    }
+
+    /* ── Expanded masonry grid ── */
+    .expand-grid-wrapper {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .expand-grid-wrapper.open {
+      max-height: 9999px; /* Large enough for any gallery */
+    }
+
+    .expand-grid-inner {
+      padding-top: 24px;
+    }
+
+    .expand-masonry {
+      columns: 4 200px;
+      column-gap: 10px;
+    }
+
+    @media (max-width: 768px) { .expand-masonry { columns: 2 140px; } }
+
+    .expand-tile {
+      break-inside: avoid;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      overflow: hidden;
+      display: block;
+      position: relative;
+      text-decoration: none;
+    }
+
+    .expand-tile img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .expand-tile:hover img { transform: scale(1.04); }
+
+    .expand-tile-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(26, 25, 23, 0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+
+    .expand-tile:hover .expand-tile-overlay { background: rgba(26, 25, 23, 0.35); }
+
+    .expand-tile-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 0.25s, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .expand-tile:hover .expand-tile-icon { opacity: 1; transform: scale(1); }
+
+    /* Collapse button */
+    .collapse-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+      padding: 11px 22px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      font-family: 'Outfit', system-ui, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.15s;
+    }
+
+    .collapse-btn:hover {
+      background: var(--text-primary);
+      border-color: var(--text-primary);
+      color: #fff;
+    }
+
+    .collapse-btn:active { transform: scale(0.97); }
+
+    /* "Voir plus" button text toggle */
+    .voir-plus-card.expanded { background: #374151; }
+    .voir-plus-card.expanded .vp-label::after { content: ' ↑'; }
+
+    /* ── CTA section ── */
+    .gallery-cta {
+      background: var(--text-primary);
+      padding: 72px 80px;
+      margin-top: 40px;
+    }
+    @media (max-width: 1280px) { .gallery-cta { padding: 64px 48px; } }
+    @media (max-width: 768px)  { .gallery-cta { padding: 48px 24px; } }
+
+    .gallery-cta-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 60px;
+      align-items: center;
+    }
+    @media (max-width: 1023px) { .gallery-cta-inner { grid-template-columns: 1fr; gap: 24px; } }
+
+    /* Lightbox overrides */
+    .lb-data .lb-caption { font-family: 'Outfit', system-ui, sans-serif; font-size: 0.82rem; }
+  </style>
 </head>
+
 <body>
-  
-  <section data-bs-version="5.1" class="menu menu2 cid-uIb8y9BQHf" once="menu" id="menu02-7">
-	
 
-	<nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-		<div class="container">
-			<div class="navbar-brand">
-				<span class="navbar-logo">
-					<a href="/">
-						<img src="assets/images/maisonhaussman-vec.png" alt="Mobirise Website Builder" style="height: 5rem;">
-					</a>
-				</span>
-				<span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-4" href="/">Maison HAUSSMANN</a></span>
-			</div>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-				<div class="hamburger">
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
-				</div>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item">
-						<a class="nav-link link text-black text-primary display-4" href="/" aria-expanded="false">Accueil</a>
-					</li><li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="/projets">Projets</a></li>
-					<li class="nav-item">
-						<a class="nav-link link text-black text-primary display-4" href="/a-propos">A propos</a>
-					</li></ul>
-				
-				<div class="navbar-buttons mbr-section-btn"><a class="btn btn-danger display-4" href="/contact">Demander un devis</a></div>
-			</div>
-		</div>
-	</nav>
-</section>
-
-<section data-bs-version="5.1" class="video05 cid-uIr3bWU5Na" id="video05-o">
-<br>
-
-    
-    
-
-    <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-12">
-            <div class="title-wrapper mb-5">
-                <h4 class="mbr-section-maintitle mbr-fonts-style mb-0 display-2">
-                    <strong>Nos Projets</strong></h4>
-            </div>
-          </div>
-            <div class="col-12 col-md">
-                <div class="text-wrapper">
-                    <h2 class="mb-4 mbr-fonts-style mbr-section-title display-7"><strong>&nbsp;- Types de projet : </strong>Peinture et revêtement de sol d'un appartement de 40m²<br><br><strong>- Durée :</strong> 1 semaine<br><br><strong>- Emplacement :</strong> Saint-Denis 93200<br></h2>
-                    
-                    
-                </div>
-            </div>
-            <div class="col-12 col-md-6 video-block">
-                <div class="mbr-figure"><iframe class="mbr-embedded-video" src="https://www.youtube.com/embed/pSOCQREqXac?rel=0&amp;amp;mute=1&amp;showinfo=0&amp;autoplay=1&amp;loop=1&amp;playlist=pSOCQREqXac" width="1280" height="720" frameborder="0" allowfullscreen></iframe></div>
-                
-            </div>
-        </div>
+<!-- ═══════════════════ NAVBAR ═══════════════════ -->
+<nav id="navbar" class="scrolled">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="assets/images/maisonhaussman-vec.png" alt="Maison HAUSSMANN">
+      <span class="nav-logo-text hidden sm:block">Maison HAUSSMANN</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/" class="nav-link">Accueil</a></li>
+      <li><a href="/projets" class="nav-link active">Projets</a></li>
+      <li><a href="/a-propos" class="nav-link">À propos</a></li>
+    </ul>
+    <a href="/contact" class="btn btn-primary hidden lg:inline-flex">Demander un devis</a>
+    <button id="hamburger" class="nav-hamburger lg:hidden" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div id="mobile-menu">
+    <div class="mobile-menu-inner">
+      <a href="/" class="mobile-nav-link">Accueil</a>
+      <a href="/projets" class="mobile-nav-link" style="color: var(--text-primary); font-weight: 500;">Projets</a>
+      <a href="/a-propos" class="mobile-nav-link">À propos</a>
+      <a href="/contact" class="btn btn-primary" style="align-self: flex-start; margin-top: 8px;">Demander un devis</a>
     </div>
-</section>
+  </div>
+</nav>
 
-<section data-bs-version="5.1" class="video05 cid-uIrG9HTT4I" id="video05-q">
-    
 
-    
-    
+<!-- ═══════════════════ BANNER ═══════════════════ -->
+<div class="projets-banner">
+  <div class="reveal">
+    <span class="eyebrow">Nos réalisations</span>
+    <h1 class="banner-title">Galerie<br>de projets</h1>
+  </div>
+  <div class="reveal d2">
+    <p style="font-size: 0.95rem; line-height: 1.72; color: var(--text-secondary); max-width: 46ch; margin-bottom: 24px;">
+      Parcourez nos réalisations par rubrique — chaque projet exécuté avec l'exigence qui définit Maison HAUSSMANN.
+    </p>
+    <a href="/contact" class="btn btn-primary">Démarrer votre projet</a>
+  </div>
+</div>
 
-    <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-12">
-            <div class="title-wrapper mb-5">
-                
-            </div>
-          </div>
-            <div class="col-12 col-md">
-                <div class="text-wrapper">
-                    <h2 class="mb-4 mbr-fonts-style mbr-section-title display-7"><strong>&nbsp;- Types de projet :</strong>&nbsp;Rénovation complète d'une salle de bain<div>
-</div><div><br></div><div><strong>- Durée :</strong> 1 semaine
-</div><div><br></div><div><strong>- Emplacement :</strong>&nbsp;Paris 75011</div><div>
-</div><div>
-</div></h2>
-                    
-                    
+
+<!-- ═══════════════════ GALLERY SECTIONS ═══════════════════ -->
+<div style="max-width: 1400px; margin: 0 auto; padding: 0 80px 16px;">
+  <div class="h-divider"></div>
+</div>
+
+<div style="padding-bottom: 80px;">
+
+  {# ── Category sections ── #}
+  {% for cat in gallery_data.categories %}
+  <section class="cat-section reveal" id="section-{{ cat.slug }}">
+    <div class="cat-section-inner">
+
+      <!-- Header -->
+      <div class="cat-header">
+        <h2 class="cat-title">{{ cat.label }}</h2>
+        {% if cat.count > 0 %}
+          <span class="cat-count">{{ cat.count }} réalisation{% if cat.count > 1 %}s{% endif %}</span>
+        {% endif %}
+      </div>
+
+      <!-- Horizontal scroll strip -->
+      <div class="strip-outer">
+        <div class="strip" id="strip-{{ cat.slug }}">
+
+          {% if cat.files %}
+            {# Show all images in the strip #}
+            {% for file in cat.files %}
+              {% if file.type == 'image' %}
+                <a
+                  href="{{ file.url }}"
+                  data-lightbox="cat-{{ cat.slug }}"
+                  data-title="Maison HAUSSMANN — {{ cat.label }}"
+                  class="strip-tile"
+                >
+                  <img
+                    src="{{ file.url }}"
+                    alt="{{ cat.label }} — Maison HAUSSMANN"
+                    loading="{% if loop.index <= 5 %}eager{% else %}lazy{% endif %}"
+                    draggable="false"
+                  >
+                  <div class="strip-tile-overlay">
+                    <div class="strip-zoom-icon">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 15.803 7.5 7.5 0 0015.803 15.803zM10.5 7.5v6m3-3h-6"/>
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+              {% else %}
+                <div class="strip-tile-video">
+                  <video controls preload="metadata">
+                    <source src="{{ file.url }}" type="video/mp4">
+                  </video>
+                  <span class="strip-video-badge">Vidéo</span>
                 </div>
+              {% endif %}
+            {% endfor %}
+
+            {# "Voir plus" card — opens expanded masonry grid #}
+            <button
+              class="voir-plus-card"
+              id="vp-{{ cat.slug }}"
+              onclick="toggleExpand('{{ cat.slug }}')"
+              aria-expanded="false"
+            >
+              <span class="vp-count">{{ cat.count }}</span>
+              <span class="vp-label">Voir tout</span>
+              <div class="vp-arrow">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </div>
+            </button>
+
+          {% else %}
+            {# Empty state #}
+            <div class="strip-empty">
+              <div class="strip-empty-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="strip-empty-title">Photos bientôt disponibles</div>
+                <div style="font-size: 0.8rem;">Déposez vos images dans <code style="font-size:0.75rem; background: var(--bg); padding: 1px 5px; border-radius: 3px;">gallery/{{ cat.slug }}/</code></div>
+              </div>
             </div>
-            <div class="col-12 col-md-6 video-block">
-                <div class="mbr-figure"><iframe class="mbr-embedded-video" src="https://youtube.com/embed/Zq4QpnDgmI0?loop=1&amp;autoplay=1" width="1280" height="720" frameborder="0" allowfullscreen></iframe></div>
-                
-            </div>
-        </div>
-    </div>
-</section>
+          {% endif %}
 
-<section data-bs-version="5.1" class="image3 cid-uIqAvFD7AW" id="image03-l">
-  
-
-  
-  
-
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12 col-lg-9">
-        <h4 class="mbr-description mbr-fonts-style mb-3 align-center display-2"><strong>Labels &amp; Certifications</strong></h4>
-        
-        <div class="image-wrapper">
-          <img class="w-100" src="assets/images/certification.png-1254x545.png" alt="Mobirise Website Builder">
         </div>
       </div>
+
+      {# Expandable masonry grid (shows all images bigger + lightbox) #}
+      {% if cat.files %}
+      <div class="expand-grid-wrapper" id="expand-{{ cat.slug }}">
+        <div class="expand-grid-inner">
+          <div class="expand-masonry">
+            {% for file in cat.files %}
+              {% if file.type == 'image' %}
+                <a
+                  href="{{ file.url }}"
+                  data-lightbox="expand-{{ cat.slug }}"
+                  data-title="Maison HAUSSMANN — {{ cat.label }}"
+                  class="expand-tile"
+                >
+                  <img
+                    src="{{ file.url }}"
+                    alt="{{ cat.label }} — Maison HAUSSMANN"
+                    loading="lazy"
+                    draggable="false"
+                  >
+                  <div class="expand-tile-overlay">
+                    <div class="expand-tile-icon">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 15.803 7.5 7.5 0 0015.803 15.803zM10.5 7.5v6m3-3h-6"/>
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+              {% else %}
+                <div style="break-inside:avoid; margin-bottom:10px; border-radius:5px; overflow:hidden; position:relative;">
+                  <video controls preload="metadata" style="width:100%; display:block;">
+                    <source src="{{ file.url }}" type="video/mp4">
+                  </video>
+                  <span class="strip-video-badge">Vidéo</span>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <button class="collapse-btn" onclick="toggleExpand('{{ cat.slug }}')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 15l-6-6-6 6"/>
+            </svg>
+            Réduire
+          </button>
+        </div>
+      </div>
+      {% endif %}
+
+    </div>
+  </section>
+  {% endfor %}
+
+
+  {# ── Toutes nos réalisations (images non catégorisées) ── #}
+  {% if gallery_data.root_files %}
+  <section class="cat-section reveal" id="section-tous">
+    <div class="cat-section-inner">
+
+      <div class="cat-header">
+        <h2 class="cat-title">Toutes nos réalisations</h2>
+        <span class="cat-count">{{ gallery_data.root_files | length }} réalisation{% if gallery_data.root_files | length > 1 %}s{% endif %}</span>
+      </div>
+
+      <div class="strip-outer">
+        <div class="strip" id="strip-tous">
+          {% for file in gallery_data.root_files %}
+            {% if file.type == 'image' %}
+              <a
+                href="{{ file.url }}"
+                data-lightbox="gallery-tous"
+                data-title="Maison HAUSSMANN"
+                class="strip-tile"
+              >
+                <img
+                  src="{{ file.url }}"
+                  alt="Réalisation Maison HAUSSMANN"
+                  loading="{% if loop.index <= 5 %}eager{% else %}lazy{% endif %}"
+                  draggable="false"
+                >
+                <div class="strip-tile-overlay">
+                  <div class="strip-zoom-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 15.803 7.5 7.5 0 0015.803 15.803zM10.5 7.5v6m3-3h-6"/>
+                    </svg>
+                  </div>
+                </div>
+              </a>
+            {% else %}
+              <div class="strip-tile-video">
+                <video controls preload="metadata">
+                  <source src="{{ file.url }}" type="video/mp4">
+                </video>
+                <span class="strip-video-badge">Vidéo</span>
+              </div>
+            {% endif %}
+          {% endfor %}
+
+          <button
+            class="voir-plus-card"
+            id="vp-tous"
+            onclick="toggleExpand('tous')"
+            aria-expanded="false"
+          >
+            <span class="vp-count">{{ gallery_data.root_files | length }}</span>
+            <span class="vp-label">Voir tout</span>
+            <div class="vp-arrow">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Expanded masonry for tous -->
+      <div class="expand-grid-wrapper" id="expand-tous">
+        <div class="expand-grid-inner">
+          <div class="expand-masonry">
+            {% for file in gallery_data.root_files %}
+              {% if file.type == 'image' %}
+                <a
+                  href="{{ file.url }}"
+                  data-lightbox="expand-tous"
+                  data-title="Maison HAUSSMANN"
+                  class="expand-tile"
+                >
+                  <img src="{{ file.url }}" alt="Réalisation Maison HAUSSMANN" loading="lazy" draggable="false">
+                  <div class="expand-tile-overlay">
+                    <div class="expand-tile-icon">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 15.803 7.5 7.5 0 0015.803 15.803zM10.5 7.5v6m3-3h-6"/>
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+              {% else %}
+                <div style="break-inside:avoid; margin-bottom:10px; border-radius:5px; overflow:hidden; position:relative;">
+                  <video controls preload="metadata" style="width:100%; display:block;">
+                    <source src="{{ file.url }}" type="video/mp4">
+                  </video>
+                  <span class="strip-video-badge">Vidéo</span>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <button class="collapse-btn" onclick="toggleExpand('tous')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 15l-6-6-6 6"/>
+            </svg>
+            Réduire
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  {% endif %}
+
+  {# Nothing at all #}
+  {% if not gallery_data.root_files and not gallery_data.categories %}
+  <div style="text-align:center; padding: 80px 24px; color: var(--text-secondary);">
+    <div style="font-weight:600; color:var(--text-primary); margin-bottom:8px;">Galerie en construction</div>
+    <p style="font-size:0.875rem;">Les réalisations seront disponibles prochainement.</p>
+  </div>
+  {% endif %}
+
+</div>
+
+
+<!-- ═══════════════════ CTA ═══════════════════ -->
+<section class="gallery-cta">
+  <div class="gallery-cta-inner">
+    <div class="reveal">
+      <span class="eyebrow" style="color: var(--accent);">Votre projet</span>
+      <h2 style="font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight:700; letter-spacing:-0.025em; color:#fff; line-height:1.15;">
+        Votre prochain projet<br>nous attend.
+      </h2>
+    </div>
+    <div class="reveal d2" style="display:flex; gap:14px; flex-wrap:wrap;">
+      <a href="/contact" class="btn btn-primary">Demander un devis gratuit</a>
+      <a href="/a-propos" class="btn btn-ghost-white">En savoir plus</a>
     </div>
   </div>
 </section>
 
-<section data-bs-version="5.1" class="contacts02 map1 cid-uIo5srtWRG" id="contacts02-i">
 
-    
-
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 content-head">
-                <div class="mbr-section-head mb-5">
-                    <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
-                        <strong>Contact</strong></h3>
-                    
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="card col-12 col-md-12 col-lg-6">
-                <div class="card-wrapper">
-                    <div class="text-wrapper">
-                        <h5 class="cardTitle mbr-fonts-style mb-2 display-5"><strong>Contactez-nous</strong></h5>
-                        <ul class="list mbr-fonts-style display-7">
-                            <li class="mbr-text item-wrap">Téléphone: <a href="tel: +33 1 43 03 32 92" class="text-danger">+33 1 43 03 32 92</a></li>
-                            <li class="mbr-text item-wrap">Email: <a href="mailto:contact@maisonhaussmann.fr" class="text-danger">contact@maisonhaussmann.fr</a></li>
-                            <li class="mbr-text item-wrap">Address: 2 Allée Bienvenue 93160 Noisy-le-Grand</li>
-                            <li class="mbr-text item-wrap">Horaires: Du Lundi au Vendredi 9H30 à 19H30</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="map-wrapper col-md-12 col-lg-6">
-                <div class="google-map"><iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37439.982603538534!2d2.4806323854805057!3d48.828454911036395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e60d5392ab5d95%3A0x40897c15360c082a!2sMaison%20Haussmann!5e0!3m2!1sfr!2sfr!4v1744673730261!5m2!1sfr!2sfr" allowfullscreen=""></iframe></div>
-            </div>
-        </div>
+<!-- ═══════════════════ CERTIFICATIONS ═══════════════════ -->
+<section style="background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:52px 0;">
+  <div style="max-width:1400px; margin:0 auto; padding:0 48px 28px; text-align:center;" class="reveal">
+    <span class="eyebrow" style="display:inline-block;">Labels &amp; Certifications</span>
+  </div>
+  <div class="marquee-outer">
+    <div class="marquee-track">
+      <img src="assets/images/certif/Qualicoat-logo-web.png" alt="Qualicoat" class="cert-logo">
+      <img src="assets/images/certif/acotherm-logo-grand.png" alt="Acotherm" class="cert-logo">
+      <img src="assets/images/certif/ce-marking.png" alt="CE" class="cert-logo" style="height:32px;">
+      <img src="assets/images/certif/isol-habitat-cambrai-logo-cstbat.png" alt="CSTBAT" class="cert-logo">
+      <img src="assets/images/certif/logo-cekal-hd.png" alt="Cekal" class="cert-logo">
+      <img src="assets/images/certif/logo_NFH.png" alt="NFH" class="cert-logo">
+      <img src="assets/images/certif/Qualicoat-logo-web.png" alt="Qualicoat" class="cert-logo">
+      <img src="assets/images/certif/acotherm-logo-grand.png" alt="Acotherm" class="cert-logo">
+      <img src="assets/images/certif/ce-marking.png" alt="CE" class="cert-logo" style="height:32px;">
+      <img src="assets/images/certif/isol-habitat-cambrai-logo-cstbat.png" alt="CSTBAT" class="cert-logo">
+      <img src="assets/images/certif/logo-cekal-hd.png" alt="Cekal" class="cert-logo">
+      <img src="assets/images/certif/logo_NFH.png" alt="NFH" class="cert-logo">
     </div>
-<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/theme/js/script.js"></script>  
-  
-  
+  </div>
+</section>
+
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;">
+      <div class="reveal">
+        <img src="assets/images/maisonhaussman-vec.png" alt="Maison HAUSSMANN"
+          style="height:36px; width:auto; margin-bottom:20px; filter:brightness(0) invert(1); opacity:0.7;">
+        <p style="max-width:36ch; margin-bottom:28px;">
+          Expert du patrimoine immobilier. Rénovation et aménagement intérieur haut de gamme.
+        </p>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <a href="tel:+33143033292" class="footer-link">+33 1 43 03 32 92</a>
+          <a href="mailto:contact@maisonhaussmann.fr" class="footer-link">contact@maisonhaussmann.fr</a>
+          <span>2 Allée Bienvenue, 93160 Noisy-le-Grand</span>
+          <span>Lun — Ven, 9h30 – 19h30</span>
+        </div>
+      </div>
+      <div class="reveal d2" style="height:280px; border-radius:4px; overflow:hidden;">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37439.982603538534!2d2.4806323854805057!3d48.828454911036395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e60d5392ab5d95%3A0x40897c15360c082a!2sMaison%20Haussmann!5e0!3m2!1sfr!2sfr!4v1744673730261!5m2!1sfr!2sfr"
+          width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy">
+        </iframe>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span style="color:rgba(255,255,255,0.25); font-size:0.8rem;">© 2025 Maison HAUSSMANN. Tous droits réservés.</span>
+      <div style="display:flex; gap:24px;">
+        <a href="/" class="footer-link" style="font-size:0.8rem;">Accueil</a>
+        <a href="/projets" class="footer-link" style="font-size:0.8rem;">Projets</a>
+        <a href="/a-propos" class="footer-link" style="font-size:0.8rem;">À propos</a>
+        <a href="/contact" class="footer-link" style="font-size:0.8rem;">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════ JS ═══════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox-plus-jquery.min.js"></script>
+<script>
+
+/* ── Lightbox ── */
+if (typeof lightbox !== 'undefined') {
+  lightbox.option({ resizeDuration: 220, wrapAround: true, albumLabel: '%1 / %2', fadeDuration: 180 });
+}
+
+/* ══════════════════════════════════
+   EXPAND / COLLAPSE
+══════════════════════════════════ */
+const expandState = {};
+
+function toggleExpand(slug) {
+  const grid = document.getElementById('expand-' + slug);
+  const vpBtn = document.getElementById('vp-' + slug);
+  if (!grid) return;
+
+  const isOpen = expandState[slug];
+  expandState[slug] = !isOpen;
+
+  if (!isOpen) {
+    // Open
+    grid.classList.add('open');
+    if (vpBtn) {
+      vpBtn.setAttribute('aria-expanded', 'true');
+      vpBtn.querySelector('.vp-label').textContent = 'Réduire';
+      vpBtn.querySelector('.vp-arrow svg').style.transform = 'rotate(180deg)';
+      vpBtn.style.background = '#374151';
+    }
+    // Scroll section into view slightly
+    setTimeout(() => {
+      document.getElementById('section-' + slug).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 80);
+  } else {
+    // Close
+    grid.classList.remove('open');
+    if (vpBtn) {
+      vpBtn.setAttribute('aria-expanded', 'false');
+      vpBtn.querySelector('.vp-label').textContent = 'Voir tout';
+      vpBtn.querySelector('.vp-arrow svg').style.transform = 'rotate(0)';
+      vpBtn.style.background = '';
+    }
+    // Scroll back to section header
+    setTimeout(() => {
+      document.getElementById('section-' + slug).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 80);
+  }
+}
+
+/* ══════════════════════════════════
+   DRAG-TO-SCROLL on strips
+══════════════════════════════════ */
+document.querySelectorAll('.strip').forEach(strip => {
+  let isDown = false, startX, scrollLeft, moved = false;
+
+  strip.addEventListener('mousedown', e => {
+    isDown = true;
+    moved  = false;
+    startX = e.pageX - strip.offsetLeft;
+    scrollLeft = strip.scrollLeft;
+    strip.style.cursor = 'grabbing';
+  });
+
+  strip.addEventListener('mouseleave', () => { isDown = false; strip.style.cursor = 'grab'; });
+  strip.addEventListener('mouseup',    () => { isDown = false; strip.style.cursor = 'grab'; });
+
+  strip.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    e.preventDefault();
+    moved = true;
+    const x    = e.pageX - strip.offsetLeft;
+    const walk = (x - startX) * 1.6;
+    strip.scrollLeft = scrollLeft - walk;
+  });
+
+  // Prevent lightbox click if user dragged
+  strip.addEventListener('click', e => {
+    if (moved) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      moved = false;
+    }
+  }, true);
+});
+
+/* ══════════════════════════════════
+   ENTRANCE ANIMATIONS on strips
+══════════════════════════════════ */
+const stripObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const tiles = entry.target.querySelectorAll('.strip-tile, .strip-tile-video, .voir-plus-card');
+    tiles.forEach((tile, i) => {
+      tile.style.opacity = '0';
+      tile.style.transform = 'translateY(14px)';
+      tile.style.transition = `opacity 0.45s cubic-bezier(0.16,1,0.3,1) ${i * 55}ms, transform 0.45s cubic-bezier(0.16,1,0.3,1) ${i * 55}ms`;
+      requestAnimationFrame(() => {
+        tile.style.opacity   = '1';
+        tile.style.transform = 'translateY(0)';
+      });
+    });
+    stripObserver.unobserve(entry.target);
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.strip-outer').forEach(el => stripObserver.observe(el));
+
+/* ── Navbar ── */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+/* ── Mobile menu ── */
+const hamburger  = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+
+/* ── Reveal on scroll ── */
+const revealEls = document.querySelectorAll('.reveal, .reveal-x, .reveal-xr');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); revealObs.unobserve(e.target); }
+  });
+}, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+
+revealEls.forEach(el => revealObs.observe(el));
+requestAnimationFrame(() => {
+  revealEls.forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('in');
+  });
+});
+
+</script>
 </body>
 </html>
